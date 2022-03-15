@@ -7,9 +7,8 @@ use warnings;
 use diagnostics;
 use Math::Trig;
 
-# calculates roughly the amount of times you would need to examine a search space
-# while using a quantum search algorithm on a space of N elements
-sub search_space
+# quantum search space size calculation
+sub quantum_search_space
 {
     $PI = pi();
     $sqrtn = sqrt($_[0]);
@@ -17,8 +16,28 @@ sub search_space
     return $rough_size;
 }
 
+# quantum search space size calculation
+sub search_space
+{
+	$num = log($_[0]);
+	$denom = log(2);
+	return $num/$denom;
+}
+
 print("enter the size of the search space N: ");
 chomp($val = <STDIN>);
 say '';
-$val = &search_space($val);
-say "the amount of times you would need to examine the search space is roughly $val times";
+$quantum_search = &quantum_search_space($val);
+$standard_search = &search_space($val);
+say "the amount of times you would need to examine the search space\n
+using a quantum algorithm is roughly $quantum_search times\n";
+say "the amount of times you would need to examine the search space\n
+using a classical algorithm is roughly $standard_search times\n\n";
+
+if($standard_search < $quantum_search)
+{
+	say "a classical algorithm would be faster";
+} else {
+	say "a quantum algorithm would be faster";
+}
+

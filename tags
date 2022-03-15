@@ -10,4 +10,6 @@ lookup_password	pwned.pl	/^sub lookup_password$/;"	s
 main	interp.c	/^int main(int argc, char **argv, char **env)$/;"	f
 main	pwned.pl	/^sub main$/;"	s
 my_perl	interp.c	/^static PerlInterpreter *my_perl;  \/***    The Perl interpreter    ***\/$/;"	v	file:
+quantum_search_space	quantum_search_space.pl	/^sub quantum_search_space$/;"	s
 request	pwned.pl	/^sub request$/;"	s
+search_space	quantum_search_space.pl	/^sub search_space$/;"	s
